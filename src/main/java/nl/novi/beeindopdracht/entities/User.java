@@ -14,6 +14,6 @@ public class User {
     @Id
     private String username;
     private String password;
-//    @OneToMany(mappedBy = "user")
-//    private List<Reservation> reservations;
+    @OneToMany(mappedBy = "user")
+    private List<Reservation> reservations;
 }
