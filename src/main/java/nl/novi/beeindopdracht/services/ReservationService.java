@@ -1,6 +1,7 @@
 package nl.novi.beeindopdracht.services;
 
 import nl.novi.beeindopdracht.entities.Reservation;
+import nl.novi.beeindopdracht.exceptions.RecordNotFoundException;
 import nl.novi.beeindopdracht.repositories.ReservationRepository;
 import org.springframework.stereotype.Service;
 
@@ -16,7 +17,18 @@ public class ReservationService {
         this.reservationRepository = reservationRepository;
     }
 
+//    GET
     public List<Reservation> getReservations() {
         return reservationRepository.findAll();
+    }
+
+    public Reservation getReservation(Long id) {
+        return reservationRepository.findById(id).orElseThrow(() -> new RecordNotFoundException("Reservation not found"));
+    }
+
+//    POST
+    public Reservation addReservation(Reservation reservation) {
+        reservationRepository.save(reservation);
+        return reservation;
     }
 }
