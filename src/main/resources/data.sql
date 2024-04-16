@@ -1,0 +1,1 @@
+INSERT INTO reservations (startTime, date,amountOfGuests) VALUES (18:00, 20-4-2024, 2);
