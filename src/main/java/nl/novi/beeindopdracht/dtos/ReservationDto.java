@@ -12,21 +12,21 @@ public class ReservationDto {
     private LocalDate date;
     private Integer amountOfGuests;
     private String type;
-    private String requestMessage;
+    private String specialRequest;
 //    TODO dubbel checken of ik deze user hier wel in wil hebben
 //    private User user;
 
     public ReservationDto() {
     }
 
-    public ReservationDto(Long id, LocalTime startTime, LocalTime endTime, LocalDate date, Integer amountOfGuests, String type, String requestMessage) {
+    public ReservationDto(Long id, LocalTime startTime, LocalTime endTime, LocalDate date, Integer amountOfGuests, String type, String specialRequest) {
         this.id = id;
         this.startTime = startTime;
         this.endTime = endTime;
         this.date = date;
         this.amountOfGuests = amountOfGuests;
         this.type = type;
-        this.requestMessage = requestMessage;
+        this.specialRequest = specialRequest;
     }
 
     public Long getId() {
@@ -77,12 +77,12 @@ public class ReservationDto {
         this.type = type;
     }
 
-    public String getRequestMessage() {
-        return requestMessage;
+    public String getSpecialRequest() {
+        return specialRequest;
     }
 
-    public void setRequestMessage(String requestMessage) {
-        this.requestMessage = requestMessage;
+    public void setSpecialRequest(String specialRequest) {
+        this.specialRequest = specialRequest;
     }
 
 //    public User getUser() {
