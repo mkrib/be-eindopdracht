@@ -2,11 +2,8 @@ package nl.novi.beeindopdracht.entities;
 
 import jakarta.persistence.*;
 
-import java.sql.Time;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.LocalTime;
-import java.util.Date;
 
 @Entity
 @Table(name = "reservations")
@@ -22,7 +19,7 @@ public class Reservation {
     @Column(nullable = false)
     private Integer amountOfGuests;
     private String type;
-    private String requestMessage;
+    private String specialRequest;
     @ManyToOne (fetch = FetchType.EAGER)
     @JoinColumn(name = "username")
     private User user;
@@ -30,14 +27,14 @@ public class Reservation {
     public Reservation() {
     }
 
-    public Reservation(Long id, LocalTime startTime, LocalTime endTime, LocalDate date, Integer amountOfGuests, String type, String requestMessage, User user) {
+    public Reservation(Long id, LocalTime startTime, LocalTime endTime, LocalDate date, Integer amountOfGuests, String type, String specialRequest, User user) {
         this.id = id;
         this.startTime = startTime;
         this.endTime = endTime;
         this.date = date;
         this.amountOfGuests = amountOfGuests;
         this.type = type;
-        this.requestMessage = requestMessage;
+        this.specialRequest = specialRequest;
         this.user = user;
     }
 
@@ -89,12 +86,12 @@ public class Reservation {
         this.type = type;
     }
 
-    public String getRequestMessage() {
-        return requestMessage;
+    public String getSpecialRequest() {
+        return specialRequest;
     }
 
-    public void setRequestMessage(String requestMessage) {
-        this.requestMessage = requestMessage;
+    public void setSpecialRequest(String requestMessage) {
+        this.specialRequest = requestMessage;
     }
 
     public User getUser() {

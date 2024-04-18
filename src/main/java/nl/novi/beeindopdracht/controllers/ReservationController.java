@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:5174")
 public class ReservationController {
     private final ReservationService reservationService;
     private final ReservationMapper reservationMapper;
@@ -36,8 +37,14 @@ public class ReservationController {
     }
 
     @PostMapping("/reservations")
-    public ResponseEntity<Object> addReservation(@Valid @RequestBody ReservationRequestDto reservationRequestDto) {
+    public ResponseEntity<ReservationDto> addReservation(@Valid @RequestBody ReservationRequestDto reservationRequestDto) {
         Reservation postedReservation = reservationService.addReservation(reservationMapper.translateToReservation(reservationRequestDto));
         return ResponseEntity.status(HttpStatus.CREATED).body(reservationMapper.translateToDto(postedReservation));
+    }
+
+    @DeleteMapping("/reservations/{id}")
+    public ResponseEntity<Object> deleteReservation(@PathVariable Long id) {
+        reservationService.deleteReservationById(id);
+        return ResponseEntity.noContent().build();
     }
 }
