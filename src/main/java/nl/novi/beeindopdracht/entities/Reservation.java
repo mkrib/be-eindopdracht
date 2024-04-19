@@ -21,7 +21,7 @@ public class Reservation {
     private String type;
     private String specialRequest;
     @ManyToOne (fetch = FetchType.EAGER)
-    @JoinColumn(name = "username")
+    @JoinColumn(name = "userid")
     private User user;
 
     public Reservation() {

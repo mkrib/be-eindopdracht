@@ -16,4 +16,6 @@ public class User {
     private String password;
     @OneToMany(mappedBy = "user")
     private List<Reservation> reservations;
+    @OneToMany(mappedBy = "user")
+    private List<Review> reviews;
 }
