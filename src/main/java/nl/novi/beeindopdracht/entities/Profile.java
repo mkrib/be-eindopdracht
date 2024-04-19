@@ -1,15 +1,18 @@
 package nl.novi.beeindopdracht.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 import java.util.Date;
 
 @Entity
 @Table
 public class Profile {
-    private String fullName;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+//    TODO email unique maken
     private String email;
+    private String fullName;
     private Long phoneNumber;
     private Date dateOfBirth;
 }

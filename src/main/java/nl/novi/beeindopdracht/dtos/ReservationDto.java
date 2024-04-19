@@ -1,41 +1,32 @@
-package nl.novi.beeindopdracht.entities;
+package nl.novi.beeindopdracht.dtos;
 
-import jakarta.persistence.*;
+import nl.novi.beeindopdracht.entities.User;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
 
-@Entity
-@Table(name = "reservations")
-public class Reservation {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class ReservationDto {
     private Long id;
-    @Column(nullable = false)
     private LocalTime startTime;
     private LocalTime endTime;
-    @Column(nullable = false)
     private LocalDate date;
-    @Column(nullable = false)
     private Integer amountOfGuests;
     private String type;
-    private String specialRequest;
-    @ManyToOne (fetch = FetchType.EAGER)
-    @JoinColumn(name = "username")
-    private User user;
+    private String requestMessage;
+//    TODO dubbel checken of ik deze user hier wel in wil hebben
+//    private User user;
 
-    public Reservation() {
+    public ReservationDto() {
     }
 
-    public Reservation(Long id, LocalTime startTime, LocalTime endTime, LocalDate date, Integer amountOfGuests, String type, String specialRequest, User user) {
+    public ReservationDto(Long id, LocalTime startTime, LocalTime endTime, LocalDate date, Integer amountOfGuests, String type, String requestMessage) {
         this.id = id;
         this.startTime = startTime;
         this.endTime = endTime;
         this.date = date;
         this.amountOfGuests = amountOfGuests;
         this.type = type;
-        this.specialRequest = specialRequest;
-        this.user = user;
+        this.requestMessage = requestMessage;
     }
 
     public Long getId() {
@@ -86,19 +77,20 @@ public class Reservation {
         this.type = type;
     }
 
-    public String getSpecialRequest() {
-        return specialRequest;
+    public String getRequestMessage() {
+        return requestMessage;
     }
 
-    public void setSpecialRequest(String requestMessage) {
-        this.specialRequest = requestMessage;
+    public void setRequestMessage(String requestMessage) {
+        this.requestMessage = requestMessage;
     }
 
-    public User getUser() {
-        return user;
-    }
+//    public User getUser() {
+//        return user;
+//    }
+//
+//    public void setUser(User user) {
+//        this.user = user;
+//    }
 
-    public void setUser(User user) {
-        this.user = user;
-    }
 }

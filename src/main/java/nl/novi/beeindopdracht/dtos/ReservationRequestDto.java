@@ -1,49 +1,35 @@
-package nl.novi.beeindopdracht.entities;
+package nl.novi.beeindopdracht.dtos;
 
-import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
+import nl.novi.beeindopdracht.entities.User;
+import org.hibernate.validator.constraints.Range;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
 
-@Entity
-@Table(name = "reservations")
-public class Reservation {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    @Column(nullable = false)
+public class ReservationRequestDto {
+    @NotNull(message = "The starting time of the reservation is required")
     private LocalTime startTime;
     private LocalTime endTime;
-    @Column(nullable = false)
+    @NotNull(message = "The date of the reservation is required")
     private LocalDate date;
-    @Column(nullable = false)
+    @NotNull(message = "The amount of guests of the reservation is required")
+//    @Size(max = 6, message = "The amount of guests must be between 0-6")
+    @Range(max = 6, message = "The amount of guests must be between 0-6")
     private Integer amountOfGuests;
     private String type;
-    private String specialRequest;
-    @ManyToOne (fetch = FetchType.EAGER)
-    @JoinColumn(name = "username")
+    private String requestMessage;
     private User user;
 
-    public Reservation() {
-    }
-
-    public Reservation(Long id, LocalTime startTime, LocalTime endTime, LocalDate date, Integer amountOfGuests, String type, String specialRequest, User user) {
-        this.id = id;
+    public ReservationRequestDto(LocalTime startTime, LocalTime endTime, LocalDate date, Integer amountOfGuests, String type, String requestMessage, User user) {
         this.startTime = startTime;
         this.endTime = endTime;
         this.date = date;
         this.amountOfGuests = amountOfGuests;
         this.type = type;
-        this.specialRequest = specialRequest;
+        this.requestMessage = requestMessage;
         this.user = user;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public LocalTime getStartTime() {
@@ -86,12 +72,12 @@ public class Reservation {
         this.type = type;
     }
 
-    public String getSpecialRequest() {
-        return specialRequest;
+    public String getRequestMessage() {
+        return requestMessage;
     }
 
-    public void setSpecialRequest(String requestMessage) {
-        this.specialRequest = requestMessage;
+    public void setRequestMessage(String requestMessage) {
+        this.requestMessage = requestMessage;
     }
 
     public User getUser() {
