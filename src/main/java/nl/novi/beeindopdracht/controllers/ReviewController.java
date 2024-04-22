@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:5174")
+@CrossOrigin
 @RequestMapping("/reviews")
 public class ReviewController {
     private final ReviewService reviewService;
