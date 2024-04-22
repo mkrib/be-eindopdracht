@@ -2,12 +2,10 @@ package nl.novi.beeindopdracht.services;
 
 import nl.novi.beeindopdracht.entities.Reservation;
 import nl.novi.beeindopdracht.exceptions.RecordNotFoundException;
-import nl.novi.beeindopdracht.mappers.ReservationMapper;
 import nl.novi.beeindopdracht.repositories.ReservationRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class ReservationService {
