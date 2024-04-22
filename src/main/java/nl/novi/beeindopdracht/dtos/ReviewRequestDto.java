@@ -1,41 +1,23 @@
-package nl.novi.beeindopdracht.entities;
+package nl.novi.beeindopdracht.dtos;
 
-import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
+import nl.novi.beeindopdracht.entities.User;
 
 import java.util.Date;
 
-@Entity
-@Table(name = "reviews")
-public class Review {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    @Column(nullable = false)
+public class ReviewRequestDto {
+    @NotNull(message = "The name of the reviewer is required")
     private String fullName;
-    @Column(nullable = false)
+    @NotNull(message = "The text of the review is required")
     private String content;
     private Date issueDate;
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "userid")
     private User user;
 
-    public Review() {
-    }
-
-    public Review(Long id, String fullName, String content, Date issueDate, User user) {
-        this.id = id;
+    public ReviewRequestDto(String fullName, String content, Date issueDate, User user) {
         this.fullName = fullName;
         this.content = content;
         this.issueDate = issueDate;
         this.user = user;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getFullName() {

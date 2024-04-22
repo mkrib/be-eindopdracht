@@ -1,7 +1,6 @@
 package nl.novi.beeindopdracht.dtos;
 
 import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
 import nl.novi.beeindopdracht.entities.User;
 import org.hibernate.validator.constraints.Range;
 
@@ -19,16 +18,16 @@ public class ReservationRequestDto {
     @Range(max = 6, message = "The amount of guests must be between 0-6")
     private Integer amountOfGuests;
     private String type;
-    private String requestMessage;
+    private String specialRequest;
     private User user;
 
-    public ReservationRequestDto(LocalTime startTime, LocalTime endTime, LocalDate date, Integer amountOfGuests, String type, String requestMessage, User user) {
+    public ReservationRequestDto(LocalTime startTime, LocalTime endTime, LocalDate date, Integer amountOfGuests, String type, String specialRequest, User user) {
         this.startTime = startTime;
         this.endTime = endTime;
         this.date = date;
         this.amountOfGuests = amountOfGuests;
         this.type = type;
-        this.requestMessage = requestMessage;
+        this.specialRequest = specialRequest;
         this.user = user;
     }
 
@@ -72,12 +71,12 @@ public class ReservationRequestDto {
         this.type = type;
     }
 
-    public String getRequestMessage() {
-        return requestMessage;
+    public String getSpecialRequest() {
+        return specialRequest;
     }
 
-    public void setRequestMessage(String requestMessage) {
-        this.requestMessage = requestMessage;
+    public void setSpecialRequest(String specialRequest) {
+        this.specialRequest = specialRequest;
     }
 
     public User getUser() {

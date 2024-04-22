@@ -1,28 +1,20 @@
-package nl.novi.beeindopdracht.entities;
+package nl.novi.beeindopdracht.dtos;
 
-import jakarta.persistence.*;
+import nl.novi.beeindopdracht.entities.User;
 
 import java.util.Date;
 
-@Entity
-@Table(name = "reviews")
-public class Review {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class ReviewDto {
     private Long id;
-    @Column(nullable = false)
     private String fullName;
-    @Column(nullable = false)
     private String content;
     private Date issueDate;
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "userid")
     private User user;
 
-    public Review() {
+    public ReviewDto() {
     }
 
-    public Review(Long id, String fullName, String content, Date issueDate, User user) {
+    public ReviewDto(Long id, String fullName, String content, Date issueDate, User user) {
         this.id = id;
         this.fullName = fullName;
         this.content = content;
