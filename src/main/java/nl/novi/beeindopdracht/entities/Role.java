@@ -4,13 +4,22 @@ import jakarta.persistence.*;
 import java.io.Serializable;
 
 @Entity
+@IdClass(RoleKey.class)
 @Table(name = "roles")
 public class Role implements Serializable {
     @Id
     @Column(nullable = false)
     private String username;
     @Column(nullable = false)
-    private String roleName;
+    private String role;
+
+    public Role() {
+    }
+
+    public Role(String username, String role) {
+        this.username = username;
+        this.role = role;
+    }
 
     public String getUsername() {
         return username;
@@ -20,11 +29,11 @@ public class Role implements Serializable {
         this.username = username;
     }
 
-    public String getRoleName() {
-        return roleName;
+    public String getRole() {
+        return role;
     }
 
-    public void setRoleName(String roleName) {
-        this.roleName = roleName;
+    public void setRole(String role) {
+        this.role = role;
     }
 }

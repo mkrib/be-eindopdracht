@@ -1,6 +1,8 @@
 package nl.novi.beeindopdracht.services;
 
+import nl.novi.beeindopdracht.dtos.UserDto;
 import nl.novi.beeindopdracht.entities.Role;
+import nl.novi.beeindopdracht.entities.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -20,20 +22,16 @@ public class CustomUserDetailsService implements UserDetailsService {
         this.userService = userService;
     }
 
-//    @Autowired
-//    private AuthorityService authorityService;
-
     @Override
     public UserDetails loadUserByUsername(String username) {
-        UserDto userDto = userService.getUser(username);
+        User user = userService.getUser(username);
 
+        String password = user.getPassword();
 
-        String password = userDto.getPassword();
-
-        Set<Role> roles = userDto.getRoles();
+        Set<Role> roles = user.getRoles();
         List<GrantedAuthority> grantedAuthorities = new ArrayList<>();
         for (Role role: roles) {
-            grantedAuthorities.add(new SimpleGrantedAuthority(role.getAuthority()));
+            grantedAuthorities.add(new SimpleGrantedAuthority(role.getRole()));
         }
 
         return new org.springframework.security.core.userdetails.User(username, password, grantedAuthorities);

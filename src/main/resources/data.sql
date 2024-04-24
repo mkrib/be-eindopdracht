@@ -5,3 +5,11 @@ INSERT INTO reviews (full_Name, content, issue_Date) VALUES ('Piet Jansen', 'Hee
                                                             ('Marie Dekker', 'Wat een gezellige plek!', '2024-05-30'),
                                                             ('Ellis', 'Zeer vriendelijk personeel.', '2024-06-20');
 
+-- TODO eigen users bedenken
+INSERT INTO users (username, password) VALUES ('user', '$2a$12$IzA1Ja1LH4PSMoro9PeITO1etDlknPjSX1nLusgt1vi9c1uaEXdEK');
+INSERT INTO users (username, password) VALUES ('admin', '$2a$12$IzA1Ja1LH4PSMoro9PeITO1etDlknPjSX1nLusgt1vi9c1uaEXdEK');
+
+INSERT INTO roles (username, role) VALUES ('user', 'ROLE_USER');
+INSERT INTO roles (username, role) VALUES ('admin', 'ROLE_ADMIN');
+
+
