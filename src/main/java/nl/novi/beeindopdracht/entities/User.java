@@ -26,6 +26,8 @@ public class User {
     private List<Reservation> reservations;
     @OneToMany(mappedBy = "user")
     private List<Review> reviews;
+    @OneToMany(mappedBy = "user")
+    private List<Blogpost> blogposts;
     private String apiKey;
 
     public String getUsername() {
@@ -66,6 +68,14 @@ public class User {
 
     public void setReviews(List<Review> reviews) {
         this.reviews = reviews;
+    }
+
+    public List<Blogpost> getBlogposts() {
+        return blogposts;
+    }
+
+    public void setBlogposts(List<Blogpost> blogposts) {
+        this.blogposts = blogposts;
     }
 
     public String getApiKey() {

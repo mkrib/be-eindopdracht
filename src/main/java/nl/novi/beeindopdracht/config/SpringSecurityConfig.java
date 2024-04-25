@@ -51,7 +51,8 @@ public class SpringSecurityConfig {
                 .cors(Customizer.withDefaults())
                 .authorizeHttpRequests(auth ->
                         auth
-//                                .requestMatchers("/**").permitAll()
+//                                Zin hieronder aanzetten betekent dat alles open staat TODO uiteindelijk verwijderen als alles werkt
+                                .requestMatchers("/**").permitAll()
                                 .requestMatchers(HttpMethod.GET, "/reservations").hasRole("ADMIN")
                                 .requestMatchers(HttpMethod.POST,"/users").permitAll()
                                 .requestMatchers("/authenticated").authenticated()
