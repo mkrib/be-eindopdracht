@@ -1,29 +1,22 @@
-package nl.novi.beeindopdracht.entities;
+package nl.novi.beeindopdracht.dtos;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import nl.novi.beeindopdracht.entities.User;
 
-@Entity
-@Table(name = "blogposts")
-public class Blogpost {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class BlogpostDto {
     private Long id;
-    @Column(nullable = false)
     private String title;
-    @Column(nullable = false)
     private String content;
-    @Column(nullable = false)
     private String previewText;
-
-//    TODO fetch type checken
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "userid")
     private User user;
 
-    public Blogpost() {
+    public BlogpostDto() {
     }
 
-    public Blogpost(Long id, String title, String content, String previewText, User user) {
+    public BlogpostDto(Long id, String title, String content, String previewText, User user) {
         this.id = id;
         this.title = title;
         this.content = content;

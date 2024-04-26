@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@CrossOrigin
 //TODO algemene request mapping toevoegen
 public class ReservationController {
     private final ReservationService reservationService;

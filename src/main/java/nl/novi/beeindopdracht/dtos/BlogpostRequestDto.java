@@ -1,42 +1,25 @@
-package nl.novi.beeindopdracht.entities;
+package nl.novi.beeindopdracht.dtos;
 
-import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
+import nl.novi.beeindopdracht.entities.User;
 
-@Entity
-@Table(name = "blogposts")
-public class Blogpost {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    @Column(nullable = false)
+public class BlogpostRequestDto {
+    @NotNull(message = "The title of the blog is required")
     private String title;
-    @Column(nullable = false)
+    @NotNull(message = "The content of the blog is required")
     private String content;
-    @Column(nullable = false)
+    @NotNull(message = "The preview text of the blog is required")
     private String previewText;
-
-//    TODO fetch type checken
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "userid")
     private User user;
 
-    public Blogpost() {
+    public BlogpostRequestDto() {
     }
 
-    public Blogpost(Long id, String title, String content, String previewText, User user) {
-        this.id = id;
+    public BlogpostRequestDto(String title, String content, String previewText, User user) {
         this.title = title;
         this.content = content;
         this.previewText = previewText;
         this.user = user;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getTitle() {
