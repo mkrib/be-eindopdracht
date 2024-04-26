@@ -1,6 +1,7 @@
 package nl.novi.beeindopdracht.mappers;
 
 import nl.novi.beeindopdracht.dtos.UserDto;
+import nl.novi.beeindopdracht.dtos.UserRequestDto;
 import nl.novi.beeindopdracht.entities.User;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
@@ -16,12 +17,16 @@ public class UserMapper {
         this.passwordEncoder = passwordEncoder;
     }
 
-    public static UserDto translateToDto(User user){
+    public UserDto translateToDto(User user){
         UserDto dto = new UserDto();
 
         dto.username = user.getUsername();
-        dto.password = user.getPassword();
+//        dto.password = user.getPassword();
         dto.apiKey = user.getApiKey();
+        dto.roles = user.getRoles();
+        dto.reservations = user.getReservations();
+        dto.reviews = user.getReviews();
+        dto.blogposts = user.getBlogposts();
 
         return dto;
     }
@@ -34,7 +39,7 @@ public class UserMapper {
         return result;
     }
 
-    public User translateToUser(UserDto dto) {
+    public User translateToUser(UserRequestDto dto) {
 
         var user = new User();
 
