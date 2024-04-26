@@ -1,6 +1,7 @@
 package nl.novi.beeindopdracht.controllers;
 
 import nl.novi.beeindopdracht.dtos.UserDto;
+import nl.novi.beeindopdracht.dtos.UserRequestDto;
 import nl.novi.beeindopdracht.entities.User;
 import nl.novi.beeindopdracht.mappers.UserMapper;
 import nl.novi.beeindopdracht.services.UserService;
@@ -33,13 +34,15 @@ public class UserController {
     }
 
     @GetMapping("/{username}")
-    public ResponseEntity<User> getUser(@PathVariable("username") String username) {
+    public ResponseEntity<UserDto> getUser(@PathVariable("username") String username) {
+        User optionalUser = userService.getUser(username);
+        UserDto userDto = userMapper.translateToDto(optionalUser);
 
-        return ResponseEntity.ok(userService.getUser(username));
+        return ResponseEntity.ok().body(userDto);
     }
 
     @PostMapping("")
-    public ResponseEntity<UserDto> addUser(@RequestBody UserDto dto) {;
+    public ResponseEntity<UserDto> addUser(@RequestBody UserRequestDto dto) {;
         String newUsername = userService.addUser(userMapper.translateToUser(dto));
         userService.addRole(newUsername, "ROLE_USER");
 
