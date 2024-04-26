@@ -32,8 +32,11 @@ public class BlogpostController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Blogpost> getBlogpost(@PathVariable Long id) {
-        return ResponseEntity.ok(blogpostService.getBlogpost(id));
+    public ResponseEntity<BlogpostDto> getBlogpost(@PathVariable Long id) {
+        Blogpost blogpost = blogpostService.getBlogpost(id);
+        BlogpostDto blogpostDto = blogpostMapper.translateToDto(blogpost);
+
+        return ResponseEntity.ok().body(blogpostDto);
     }
 
     @PostMapping("")
