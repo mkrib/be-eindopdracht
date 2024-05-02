@@ -1,25 +1,26 @@
-package nl.novi.beeindopdracht.entities;
+package nl.novi.beeindopdracht.dtos;
 
-import jakarta.persistence.*;
+import nl.novi.beeindopdracht.entities.User;
 
 import java.util.Date;
 
-@Entity
-@Table(name = "profiles")
-public class Profile {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class ProfileDto {
     private Long id;
-    @Column(nullable = false, unique = true)
     private String email;
-    @Column(nullable = false)
     private String fullName;
     private Long phoneNumber;
     private Date dateOfBirth;
-//    TODO idee voor technische keuze, onderstaande referenced column name
-    @OneToOne(mappedBy = "profile", cascade = CascadeType.ALL)
-//            (name = "username", referencedColumnName = "username")
-    private User user;
+
+    public ProfileDto() {
+    }
+
+    public ProfileDto(Long id, String email, String fullName, Long phoneNumber, Date dateOfBirth) {
+        this.id = id;
+        this.email = email;
+        this.fullName = fullName;
+        this.phoneNumber = phoneNumber;
+        this.dateOfBirth = dateOfBirth;
+    }
 
     public Long getId() {
         return id;
@@ -59,13 +60,5 @@ public class Profile {
 
     public void setDateOfBirth(Date dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
     }
 }

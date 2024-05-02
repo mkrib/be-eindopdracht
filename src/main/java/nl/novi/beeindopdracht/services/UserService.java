@@ -1,8 +1,10 @@
 package nl.novi.beeindopdracht.services;
 
-import nl.novi.beeindopdracht.dtos.UserDto;
+import nl.novi.beeindopdracht.dtos.UserRequestDto;
+import nl.novi.beeindopdracht.entities.Profile;
 import nl.novi.beeindopdracht.entities.Role;
 import nl.novi.beeindopdracht.entities.User;
+import nl.novi.beeindopdracht.mappers.ProfileMapper;
 import nl.novi.beeindopdracht.mappers.UserMapper;
 import nl.novi.beeindopdracht.repositories.UserRepository;
 import nl.novi.beeindopdracht.utils.RandomStringGenerator;
@@ -10,7 +12,6 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Set;
 
 @Service
 public class UserService {
@@ -35,6 +36,13 @@ public class UserService {
 
 //    POST
     public String addUser(User user) {
+        String randomString = RandomStringGenerator.generateAlphaNumeric(20);
+        user.setApiKey(randomString);
+        User newUser = userRepository.save(user);
+        return newUser.getUsername();
+    }
+
+    public String addAdmin(User user) {
         String randomString = RandomStringGenerator.generateAlphaNumeric(20);
         user.setApiKey(randomString);
         User newUser = userRepository.save(user);

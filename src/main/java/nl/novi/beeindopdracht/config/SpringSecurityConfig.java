@@ -55,6 +55,7 @@ public class SpringSecurityConfig {
                                 .requestMatchers("/**").permitAll()
                                 .requestMatchers(HttpMethod.GET, "/reservations").hasRole("ADMIN")
                                 .requestMatchers(HttpMethod.POST,"/users").permitAll()
+//                                .requestMatchers("/users/admin").hasRole("ADMIN")
                                 .requestMatchers("/authenticated").authenticated()
                                 .requestMatchers("/authenticate").permitAll()
                                 .anyRequest().denyAll()

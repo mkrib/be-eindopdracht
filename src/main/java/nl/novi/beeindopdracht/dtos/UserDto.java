@@ -1,9 +1,6 @@
 package nl.novi.beeindopdracht.dtos;
 
-import nl.novi.beeindopdracht.entities.Blogpost;
-import nl.novi.beeindopdracht.entities.Reservation;
-import nl.novi.beeindopdracht.entities.Review;
-import nl.novi.beeindopdracht.entities.Role;
+import nl.novi.beeindopdracht.entities.*;
 
 import java.util.List;
 import java.util.Set;
@@ -17,6 +14,7 @@ public class UserDto {
     public List<Reservation> reservations;
     public List<Review> reviews;
     public List<Blogpost> blogposts;
+    public ProfileDto profile;
 
     public String getUsername() {
         return username;
@@ -72,6 +70,14 @@ public class UserDto {
 
     public void setBlogposts(List<Blogpost> blogposts) {
         this.blogposts = blogposts;
+    }
+
+    public ProfileDto getProfile() {
+        return profile;
+    }
+
+    public void setProfile(ProfileDto profile) {
+        this.profile = profile;
     }
 }
 

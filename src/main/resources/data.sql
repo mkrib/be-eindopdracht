@@ -6,8 +6,8 @@ INSERT INTO reviews (full_Name, content, issue_Date) VALUES ('Piet Jansen', 'Hee
                                                             ('Ellis', 'Zeer vriendelijk personeel.', '2024-06-20');
 
 -- TODO eigen users bedenken
-INSERT INTO users (username, password) VALUES ('user', '$2a$12$IzA1Ja1LH4PSMoro9PeITO1etDlknPjSX1nLusgt1vi9c1uaEXdEK');
-INSERT INTO users (username, password) VALUES ('admin', '$2a$12$IzA1Ja1LH4PSMoro9PeITO1etDlknPjSX1nLusgt1vi9c1uaEXdEK');
+INSERT INTO users (username, password) VALUES ('user', '$2y$10$33tyI/T.dUvdrCvX1Ao/B.iLDtULQpgCCOB6YgFCQDjMBQgaOiu..');
+INSERT INTO users (username, password) VALUES ('admin', '$2y$10$HGacaJYGP55U8BUQaZ.CCegOuvrALrrN71QldVbF3D15UU15Mnh.W');
 
 INSERT INTO roles (username, role) VALUES ('user', 'ROLE_USER');
 INSERT INTO roles (username, role) VALUES ('admin', 'ROLE_ADMIN');
