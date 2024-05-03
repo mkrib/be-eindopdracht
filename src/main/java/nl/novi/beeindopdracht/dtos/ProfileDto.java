@@ -7,17 +7,19 @@ import java.util.Date;
 public class ProfileDto {
     private Long id;
     private String email;
-    private String fullName;
+    private String firstname;
+    private String lastname;
     private Long phoneNumber;
     private Date dateOfBirth;
 
     public ProfileDto() {
     }
 
-    public ProfileDto(Long id, String email, String fullName, Long phoneNumber, Date dateOfBirth) {
+    public ProfileDto(Long id, String email, String firstname, String lastname, Long phoneNumber, Date dateOfBirth) {
         this.id = id;
         this.email = email;
-        this.fullName = fullName;
+        this.firstname = firstname;
+        this.lastname = lastname;
         this.phoneNumber = phoneNumber;
         this.dateOfBirth = dateOfBirth;
     }
@@ -38,12 +40,20 @@ public class ProfileDto {
         this.email = email;
     }
 
-    public String getFullName() {
-        return fullName;
+    public String getFirstname() {
+        return firstname;
     }
 
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
+    }
+
+    public String getLastname() {
+        return lastname;
+    }
+
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
     }
 
     public Long getPhoneNumber() {

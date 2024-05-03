@@ -1,24 +1,26 @@
 package nl.novi.beeindopdracht.dtos;
 
 import jakarta.validation.constraints.NotNull;
-import nl.novi.beeindopdracht.entities.User;
 
 import java.util.Date;
 
 public class ProfileRequestDto {
     @NotNull(message = "Email is required")
     private String email;
-    @NotNull(message = "Name is required")
-    private String fullName;
+    @NotNull(message = "Firstname is required")
+    private String firstname;
+    @NotNull(message = "Lastname is required")
+    private String lastname;
     private Long phoneNumber;
     private Date dateOfBirth;
 
     public ProfileRequestDto() {
     }
 
-    public ProfileRequestDto(String email, String fullName, Long phoneNumber, Date dateOfBirth) {
+    public ProfileRequestDto(String email, String firstname, String lastname, Long phoneNumber, Date dateOfBirth) {
         this.email = email;
-        this.fullName = fullName;
+        this.firstname = firstname;
+        this.lastname = lastname;
         this.phoneNumber = phoneNumber;
         this.dateOfBirth = dateOfBirth;
     }
@@ -31,12 +33,20 @@ public class ProfileRequestDto {
         this.email = email;
     }
 
-    public String getFullName() {
-        return fullName;
+    public String getFirstname() {
+        return firstname;
     }
 
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
+    }
+
+    public String getLastname() {
+        return lastname;
+    }
+
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
     }
 
     public Long getPhoneNumber() {

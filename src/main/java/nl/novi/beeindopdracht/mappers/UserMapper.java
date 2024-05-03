@@ -63,7 +63,8 @@ public class UserMapper {
     public Profile translateToProfile(UserRequestDto dto) {
         Profile profile = new Profile();
         profile.setEmail(dto.getEmail());
-        profile.setFullName(dto.getFullName());
+        profile.setFirstname(dto.getFirstname());
+        profile.setLastname(dto.getLastname());
         profile.setPhoneNumber(dto.getPhoneNumber());
         profile.setDateOfBirth(dto.getDateOfBirth());
 

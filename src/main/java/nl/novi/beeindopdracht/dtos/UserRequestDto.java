@@ -1,7 +1,5 @@
 package nl.novi.beeindopdracht.dtos;
 
-import nl.novi.beeindopdracht.entities.Profile;
-
 import java.util.Date;
 
 public class UserRequestDto {
@@ -53,15 +51,26 @@ public class UserRequestDto {
         profile.setEmail(email);
     }
 
-    public String getFullName() {
-        return profile != null ? profile.getFullName() : null;
+    public String getFirstname() {
+        return profile != null ? profile.getFirstname() : null;
     }
 
-    public void setFullName(String fullName) {
+    public void setFirstname(String firstname) {
         if (profile == null) {
             profile = new ProfileRequestDto();
         }
-        profile.setFullName(fullName);
+        profile.setFirstname(firstname);
+    }
+
+    public String getLastname() {
+        return profile != null ? profile.getLastname() : null;
+    }
+
+    public void setLastname(String lastname) {
+        if (profile == null) {
+            profile = new ProfileRequestDto();
+        }
+        profile.setLastname(lastname);
     }
 
     public Long getPhoneNumber() {

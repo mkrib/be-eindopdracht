@@ -13,7 +13,9 @@ public class Profile {
     @Column(nullable = false, unique = true)
     private String email;
     @Column(nullable = false)
-    private String fullName;
+    private String firstname;
+    @Column(nullable = false)
+    private String lastname;
     private Long phoneNumber;
     private Date dateOfBirth;
 //    TODO idee voor technische keuze, onderstaande referenced column name
@@ -37,12 +39,20 @@ public class Profile {
         this.email = email;
     }
 
-    public String getFullName() {
-        return fullName;
+    public String getFirstname() {
+        return firstname;
     }
 
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
+    public void setFirstname(String fullName) {
+        this.firstname = fullName;
+    }
+
+    public String getLastname() {
+        return lastname;
+    }
+
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
     }
 
     public Long getPhoneNumber() {

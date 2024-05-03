@@ -17,7 +17,8 @@ public class ProfileMapper {
         ProfileDto dto = new ProfileDto();
         dto.setId(profile.getId());
         dto.setEmail(profile.getEmail());
-        dto.setFullName(profile.getFullName());
+        dto.setFirstname(profile.getFirstname());
+        dto.setLastname(profile.getLastname());
         dto.setPhoneNumber(profile.getPhoneNumber());
         dto.setDateOfBirth(profile.getDateOfBirth());
 
@@ -37,7 +38,7 @@ public class ProfileMapper {
         Profile profile = new Profile();
 
         profile.setEmail(dto.getEmail());
-        profile.setFullName(dto.getFullName());
+        profile.setFirstname(dto.getFirstname());
         profile.setPhoneNumber(dto.getPhoneNumber());
         profile.setDateOfBirth(dto.getDateOfBirth());
 
