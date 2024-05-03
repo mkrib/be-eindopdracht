@@ -1,34 +1,28 @@
-package nl.novi.beeindopdracht.entities;
+package nl.novi.beeindopdracht.dtos;
 
-import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 
 import java.util.Date;
 
-@Entity
-@Table(name = "profiles")
-public class Profile {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    @Column(nullable = false, unique = true)
+public class ProfileRequestDto {
+    @NotNull(message = "Email is required")
     private String email;
-    @Column(nullable = false)
+    @NotNull(message = "Firstname is required")
     private String firstname;
-    @Column(nullable = false)
+    @NotNull(message = "Lastname is required")
     private String lastname;
     private Long phoneNumber;
     private Date dateOfBirth;
-//    TODO idee voor technische keuze, onderstaande referenced column name
-    @OneToOne(mappedBy = "profile", cascade = CascadeType.ALL)
-//            (name = "username", referencedColumnName = "username")
-    private User user;
 
-    public Long getId() {
-        return id;
+    public ProfileRequestDto() {
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public ProfileRequestDto(String email, String firstname, String lastname, Long phoneNumber, Date dateOfBirth) {
+        this.email = email;
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.phoneNumber = phoneNumber;
+        this.dateOfBirth = dateOfBirth;
     }
 
     public String getEmail() {
@@ -43,8 +37,8 @@ public class Profile {
         return firstname;
     }
 
-    public void setFirstname(String fullName) {
-        this.firstname = fullName;
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
     }
 
     public String getLastname() {
@@ -69,13 +63,5 @@ public class Profile {
 
     public void setDateOfBirth(Date dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
     }
 }

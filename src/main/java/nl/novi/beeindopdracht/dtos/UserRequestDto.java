@@ -1,14 +1,12 @@
 package nl.novi.beeindopdracht.dtos;
 
-import nl.novi.beeindopdracht.entities.Role;
-
-import java.util.Set;
+import java.util.Date;
 
 public class UserRequestDto {
     public String username;
     public String password;
     public String apiKey;
-    public Set<Role> roles;
+    public ProfileRequestDto profile;
 
     public String getUsername() {
         return username;
@@ -34,11 +32,66 @@ public class UserRequestDto {
         this.apiKey = apiKey;
     }
 
-    public Set<Role> getRoles() {
-        return roles;
+    public ProfileRequestDto getProfile() {
+        return profile;
     }
 
-    public void setRoles(Set<Role> roles) {
-        this.roles = roles;
+    public void setProfile(ProfileRequestDto profile) {
+        this.profile = profile;
+    }
+
+    public String getEmail() {
+        return profile != null ? profile.getEmail() : null;
+    }
+
+    public void setEmail(String email) {
+        if (profile == null) {
+            profile = new ProfileRequestDto();
+        }
+        profile.setEmail(email);
+    }
+
+    public String getFirstname() {
+        return profile != null ? profile.getFirstname() : null;
+    }
+
+    public void setFirstname(String firstname) {
+        if (profile == null) {
+            profile = new ProfileRequestDto();
+        }
+        profile.setFirstname(firstname);
+    }
+
+    public String getLastname() {
+        return profile != null ? profile.getLastname() : null;
+    }
+
+    public void setLastname(String lastname) {
+        if (profile == null) {
+            profile = new ProfileRequestDto();
+        }
+        profile.setLastname(lastname);
+    }
+
+    public Long getPhoneNumber() {
+        return profile != null ? profile.getPhoneNumber() : null;
+    }
+
+    public void setPhoneNumber(Long phoneNumber) {
+        if (profile == null) {
+            profile = new ProfileRequestDto();
+        }
+        profile.setPhoneNumber(phoneNumber);
+    }
+
+    public Date getDateOfBirth() {
+        return profile != null ? profile.getDateOfBirth() : null;
+    }
+
+    public void setDateOfBirth(Date dateOfBirth) {
+        if (profile == null) {
+            profile = new ProfileRequestDto();
+        }
+        profile.setDateOfBirth(dateOfBirth);
     }
 }

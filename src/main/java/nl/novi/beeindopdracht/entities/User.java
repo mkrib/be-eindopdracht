@@ -28,6 +28,8 @@ public class User {
     private List<Review> reviews;
     @OneToMany(mappedBy = "user")
     private List<Blogpost> blogposts;
+    @OneToOne
+    private Profile profile;
     private String apiKey;
 
     public String getUsername() {
@@ -92,5 +94,13 @@ public class User {
 
     public void addRole(Role role) {
         this.roles.add(role);
+    }
+
+    public Profile getProfile() {
+        return profile;
+    }
+
+    public void setProfile(Profile profile) {
+        this.profile = profile;
     }
 }
